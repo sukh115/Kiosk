@@ -1,11 +1,11 @@
-package kioskLv4;
+package kioskLv6;
 
 // 메뉴 항목을 나타내는 클래스
 public class MenuItem {
-    private Integer num; // 메뉴 번호
-    private String name; // 메뉴 이름
-    private double price; // 메뉴 가격
-    private String description; // 메뉴 설명
+    private final Integer num; // 메뉴 번호
+    private final String name; // 메뉴 이름
+    private final double price; // 메뉴 가격
+    private final String description; // 메뉴 설명
 
     public MenuItem(Integer num,String name, double price, String description) {
         this.num = num;

@@ -1,4 +1,4 @@
-package kioskLv4;
+package kioskLv6;
 
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class KioskLv4 {
         bugerItems.add(new MenuItem(3,"Cheeseburger", 6.9, "포테이토 번과 비프패티, 치즈가 토핑된 치즈버거"));
         bugerItems.add(new MenuItem(4,"BigMac", 5.5, "참깨빵 위에 순쇠고기 패티2장 특별한 소스 양상추"));
 
-        // 음료수 메뉴 항목 ㅜ가
+        // 음료수 메뉴 항목 추가
         List<MenuItem> drinkItems = new ArrayList<>();
         drinkItems.add(new MenuItem(1,"콜라",2.5,"코카콜라"));
         drinkItems.add(new MenuItem(2,"사이다",2.5,"칠성사이다"));

@@ -1,4 +1,4 @@
-package kioskLv4;
+package kioskLv6;
 
 // 열거형
 public enum Discount {

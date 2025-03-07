@@ -1,4 +1,4 @@
-package kioskLv4;
+package kioskLv6;
 
 import java.util.*;
 import java.util.stream.IntStream;
@@ -48,7 +48,7 @@ public class Kiosk {
         System.out.println("3. 주문하기");
         System.out.println("0. 종료");
     }
-
+// 인덱스 순서 바꾸기
     // 카테고리 선택 화면
     private void selectCategory() {
         while (true) {
@@ -71,6 +71,7 @@ public class Kiosk {
             }
         }
     }
+    // 메뉴선택후 갯수로 넣기
     // 메뉴 아이템 선택 화면
     private void selectMenuItem(Menu selectedMenu) {
         while (true) {
@@ -92,6 +93,7 @@ public class Kiosk {
         }
     }
 
+    // 장바구니 아이템 개수 합산금액
     // 장바구니 보기 화면
     private void viewCart() {
         while (true) {
