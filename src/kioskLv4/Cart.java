@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
+// 장바구니 클래스
 public class Cart {
-    private final List<MenuItem> cartItems = new ArrayList<>();
+    private final List<MenuItem> cartItems = new ArrayList<>(); // 장바구니 아이템 리스트
 
     // 장바구니에 메뉴 추가
     public void addItem(MenuItem item) {
@@ -37,7 +38,7 @@ public class Cart {
         }
     }
 
-    // 총 금액
+    // 총 금액 계산
     public double calculateTotal() {
         double total = 0;
         for (MenuItem item : cartItems) {

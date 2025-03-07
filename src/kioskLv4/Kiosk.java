@@ -3,22 +3,28 @@ package kioskLv4;
 import java.util.*;
 import java.util.stream.IntStream;
 
+// 키오스크 시스템 관리 클래스
 public class Kiosk {
+    // 속성
     private final List<Menu> menus;
     private final Scanner scanner;
     private final Cart cart;
 
+    // 생성자
     public Kiosk(List<Menu> menus, Scanner scanner) {
         this.menus = menus;
         this.scanner = scanner;
         this.cart = new Cart();
     }
 
+    // 기능
+
+    // 키오스크 메인 실행 메서드
     public void start() {
         while (true) {
-            displayMainMenu();
+            displayMainMenu(); // 메인 메뉴 출력
             System.out.print("메뉴를 선택해주세요 : ");
-            int option = getValidIntInput();
+            int option = getValidIntInput(); // 사용자 입력 받기
             // 홈 또는 뒤로가기 처리
 
             switch (option) {
@@ -53,7 +59,7 @@ public class Kiosk {
             System.out.println("할인 옵션을 선택하세요 (0. 뒤로 가기 | -1. 홈으로 가기)");
             System.out.print("메뉴 카테고리를 선택해주세요: ");
 
-            int choiceCategory = getValidIntInput();
+            int choiceCategory = getValidIntInput(); // 입력 유효성 검사
             if (returnHome(choiceCategory)) return;  // 홈 또는 뒤로가기 처리
 
 
@@ -68,11 +74,11 @@ public class Kiosk {
     // 메뉴 아이템 선택 화면
     private void selectMenuItem(Menu selectedMenu) {
         while (true) {
-            selectedMenu.displayMenu();
+            selectedMenu.displayMenu(); // 메뉴 출력
             System.out.println("0. 뒤로 가기 | -1. 홈으로 가기");
             System.out.print("원하는 메뉴를 선택하세요: ");
-            int option = getValidIntInput();
 
+            int option = getValidIntInput(); // 입력 유효성 검사
             if (returnHome(option)) return;  // 홈 또는 뒤로가기 처리
 
             List<MenuItem> items = selectedMenu.getMenuItems();
@@ -89,12 +95,11 @@ public class Kiosk {
     // 장바구니 보기 화면
     private void viewCart() {
         while (true) {
-            cart.displayCart();
-            System.out.println("");
+            cart.displayCart(); // 장바구니 출력;
             System.out.println("\n[1] 항목 삭제 | 0. 뒤로 가기 | -1. 홈으로 가기");
             System.out.print("선택: ");
-            int option = getValidIntInput();
 
+            int option = getValidIntInput(); // 입력 유효성 검사
             if (returnHome(option)) return;  // 홈 또는 뒤로가기 처리
 
             if (option == 1) {
@@ -107,7 +112,7 @@ public class Kiosk {
         }
     }
 
-    // 주문 처리 화면
+    // 주문 처리 메서드
     private void checkout() {
         while (true) {  // 올바른 입력이 나올 때까지 반복
             System.out.println("\n=== 할인 카테고리 선택 ===");
@@ -123,9 +128,8 @@ public class Kiosk {
                     ));
 
 
-            int option = getValidIntInput();
-
-            if (returnHome(option)) return;  // 홈으로 이동
+            int option = getValidIntInput();  // 입력 유효성 검사
+            if (returnHome(option)) return;  // 홈 또는 뒤로가기 처리
 
             if (option >= 1 && option <= discounts.length) {
                 Discount selectedDiscount = discounts[option - 1];

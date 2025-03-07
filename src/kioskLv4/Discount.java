@@ -9,22 +9,25 @@ public enum Discount {
     NOONE("일반",0.0);
 
 
-    private final String discountCategory;
-    private final double discountRate;
+    private final String discountCategory; // 할인 카테고리 이름
+    private final double discountRate; // 할인율
 
     Discount(String discountCategory, double discountRate){
         this.discountCategory = discountCategory;
         this.discountRate = discountRate;
     }
 
+    // 할인 카테고리 게터
     public String getDiscountCategory() {
         return discountCategory;
     }
 
+    // 할인율 카테고리 게터
     public double getDiscountRate() {
         return discountRate;
     }
 
+    // 할인율을 적용하는 메서드
     public double applyDisCount(double amount) {
         return amount * (1 - discountRate);
     }
