@@ -37,7 +37,7 @@ public class Cart {
         }
     }
 
-    // 총 금액 계산
+    // 총 금액
     public double calculateTotal() {
         double total = 0;
         for (MenuItem item : cartItems) {
@@ -46,18 +46,28 @@ public class Cart {
         return total;
     }
 
+    // 할인 적용 후 총 금액
+    public double applyDiscount(Discount discount){
+        double total = calculateTotal();
+        return discount.applyDisCount(total);
+    }
+
     // 장바구니가 비었는지 확인
     public boolean isEmpty() {
         return cartItems.isEmpty();
     }
 
     // 주문 완료 후 초기화
-    public void checkout() {
+    public void checkout(Discount selectedDiscount) {
         if (cartItems.isEmpty()) {
             System.out.println("장바구니가 비어 있어 주문할 수 없습니다.");
         } else {
+
+            double totalBeforeDiscount = calculateTotal();  // 할인 전 총 금액
+            double totalAfterDiscount = selectedDiscount.applyDisCount(totalBeforeDiscount); // 할인 적용 후 금액
+
             System.out.println("주문이 완료되었습니다!");
-            System.out.println("총 결제 금액: W " + calculateTotal()*1000);
+            System.out.println(selectedDiscount.getDiscountCategory() + "할인 적용 후 총 결제 금액: W " + (totalAfterDiscount * 1000));
             cartItems.clear();  // 장바구니 초기화
         }
     }
