@@ -20,6 +20,10 @@ public enum Discount {
         return discountCategory;
     }
 
+    public double getDiscountRate() {
+        return discountRate;
+    }
+
     public double applyDisCount(double amount) {
         return amount * (1 - discountRate);
     }

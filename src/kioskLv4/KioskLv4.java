@@ -49,7 +49,7 @@ public class KioskLv4 {
         // 키오스크 시작
         kiosk.start();
 
-
+        // 종료
         scanner.close();
     }
 }

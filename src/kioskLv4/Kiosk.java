@@ -116,7 +116,12 @@ public class Kiosk {
 
             // 할인 카테고리 목록
             IntStream.range(0, discounts.length)
-                    .forEach(i -> System.out.println((i + 1) + ". " + discounts[i].getDiscountCategory()));
+                    .forEach(i -> System.out.println(
+                            String.format("%d. %s || %.0f%%",
+                                            i + 1,
+                                            discounts[i].getDiscountCategory(),
+                                            discounts[i].getDiscountRate() * 100)
+                    ));
 
 
             int option = getValidIntInput();
