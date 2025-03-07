@@ -10,11 +10,6 @@ public class KioskLv4 {
         // 햄버거 메뉴 아이템 생성
         List<Menu> menus = new ArrayList<>();
 
-
-
-
-
-
         // 햄버거 메뉴
         List<MenuItem> bugerItems = new ArrayList<>();
         bugerItems.add(new MenuItem(1,"ShackBurger", 10.6, "토마토, 양상추, 쉑소스가 토핑된 치즈버거"));

@@ -1,5 +1,6 @@
 package kioskLv4;
 
+// 열거형
 public enum Discount {
     SOLDIER("군인",0.15),
     STUDENT("학생",0.1),

@@ -65,7 +65,6 @@ public class Kiosk {
             }
         }
     }
-
     // 메뉴 아이템 선택 화면
     private void selectMenuItem(Menu selectedMenu) {
         while (true) {
