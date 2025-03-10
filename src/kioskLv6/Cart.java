@@ -22,7 +22,7 @@ public class Cart {
     public void removeItem(int index) {
         if (index >= 0 && index < cartItems.size()) {
             MenuItem removedItem = cartItems.get(index);
-            cartItems.remove(index);
+            cartItems.remove(index); // 삭제 메서드호출
             System.out.println(removedItem.getName() + "이(가) 장바구니에서 삭제되었습니다.");
         } else {
             System.out.println("잘못된 선택입니다. 다시 입력하세요.");
@@ -38,14 +38,14 @@ public class Cart {
 
         System.out.println("=== 장바구니 목록 ===");
 
-        AtomicInteger index = new AtomicInteger(1);
+        AtomicInteger index = new AtomicInteger(1); //AtomicInteger로 forEach문 index 변경가능
 
         // 중복 메뉴 합산 처리
-        cartItems.stream()
+        cartItems.stream()// 스트림으로 변환
                 .collect(Collectors.groupingBy(item -> item, Collectors.counting())) // 개수 미리 계산
-                .entrySet().stream()
+                .entrySet().stream() // Map을 스트림으로 변환
                 .sorted(Map.Entry.comparingByKey(Comparator.comparing(MenuItem::getName))) // 정렬 추가
-                .forEach(entry -> {
+                .forEach(entry -> { // 최종 출력
                     MenuItem item = entry.getKey();
                     long count = entry.getValue();
                     double totalItemPrice = item.getPrice() * count;
@@ -53,7 +53,7 @@ public class Cart {
                 });
 
 
-        System.out.println("총 금액: W " + calculateTotal()); // ✅ 여기에 위치해야 함!
+        System.out.println("총 금액: W " + calculateTotal());
     }
 
 
