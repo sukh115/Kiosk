@@ -13,18 +13,11 @@ public class MenuItem {
         this.description = description;
     }
 
-    public Integer getNum() {
-        return num;
-    }
 
     public String getName() {
         return name;
     }
 
-
-    public double getPrice() {
-        return price;
-    }
 
 
     public String getDescription() {

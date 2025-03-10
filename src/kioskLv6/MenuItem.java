@@ -14,11 +14,6 @@ public class MenuItem {
         this.description = description;
     }
 
-    // 메뉴 번호 게터
-    public Integer getNum() {
-        return num;
-    }
-
     // 메뉴 이름 게터
     public String getName() {
         return name;

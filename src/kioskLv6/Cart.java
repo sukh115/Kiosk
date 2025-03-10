@@ -67,15 +67,7 @@ public class Cart {
         return total;
     }
 
-    // 할인 적용 후 총 금액
-    public double applyDiscount(Discount discount){
-        return discount.applyDisCount(calculateTotal());
-    }
 
-    // 장바구니가 비었는지 확인
-    public boolean isEmpty() {
-        return cartItems.isEmpty();
-    }
 
     // 주문 완료 후 초기화
     public void checkout(Discount selectedDiscount) {
