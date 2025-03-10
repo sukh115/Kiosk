@@ -34,7 +34,7 @@ public class Cart {
                     .mapToObj(i -> (i + 1) + ". " + cartItems.get(i).getName() + " | W " + cartItems.get(i).getPrice())
                     .forEach(System.out::println);
 
-            System.out.println("총 금액: W " + calculateTotal()*1000);
+            System.out.println("총 금액: W " + calculateTotal());
         }
     }
 
@@ -68,7 +68,7 @@ public class Cart {
             double totalAfterDiscount = selectedDiscount.applyDisCount(totalBeforeDiscount); // 할인 적용 후 금액
 
             System.out.println("주문이 완료되었습니다!");
-            System.out.println(selectedDiscount.getDiscountCategory() + "할인 적용 후 총 결제 금액: W " + (totalAfterDiscount * 1000));
+            System.out.println(selectedDiscount.getDiscountCategory() + "할인 적용 후 총 결제 금액: W " + (totalAfterDiscount));
             cartItems.clear();  // 장바구니 초기화
         }
     }
