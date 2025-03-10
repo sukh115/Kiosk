@@ -71,7 +71,6 @@ public class Kiosk {
             }
         }
     }
-    // 메뉴선택후 갯수로 넣기
     // 메뉴 아이템 선택 화면
     private void selectMenuItem(Menu selectedMenu) {
         while (true) {
@@ -93,7 +92,6 @@ public class Kiosk {
         }
     }
 
-    // 장바구니 아이템 개수 합산금액
     // 장바구니 보기 화면
     private void viewCart() {
         while (true) {
