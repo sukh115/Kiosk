@@ -1,28 +1,10 @@
 package kioskLv6;
 
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-public class KioskLv4 {
-    public static void main(String[] args) {
-
-        List<Menu> menus =MenuData.getMenus();
-
-        // 사용자 입력을 받기 위한 객체 생성
-        Scanner scanner = new Scanner(System.in);
-        Kiosk kiosk = new Kiosk(menus, scanner);
-        // 키오스크 시작
-        kiosk.start();
-
-        // 프로그램 종료시 객체 닫기
-        scanner.close();
-    }
-}
-
-    class MenuData{
-     static List<Menu> getMenus() {
+public class MenuData {
+    static List<Menu> getMenus() {
         // 키오스크 메뉴 목록 생성
         List<Menu> menus = new ArrayList<>();
 
@@ -57,4 +39,3 @@ public class KioskLv4 {
         return menus;
     }
 }
-

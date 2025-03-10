@@ -48,7 +48,6 @@ public class Kiosk {
         System.out.println("3. 주문하기");
         System.out.println("0. 종료");
     }
-// 인덱스 순서 바꾸기
     // 카테고리 선택 화면
     private void selectCategory() {
         while (true) {
