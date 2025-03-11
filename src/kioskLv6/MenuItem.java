@@ -7,6 +7,7 @@ public class MenuItem {
     private final double price; // 메뉴 가격
     private final String description; // 메뉴 설명
 
+    // 생성자
     public MenuItem(Integer num,String name, double price, String description) {
         this.num = num;
         this.name = name;

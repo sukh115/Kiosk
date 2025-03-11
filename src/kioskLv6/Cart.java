@@ -40,7 +40,7 @@ public class Cart {
 
         AtomicInteger index = new AtomicInteger(1); //AtomicInteger로 forEach문 index 변경가능
 
-        // 중복 메뉴 합산 처리
+        // 중복된 메뉴 개수를 계산하고 정렬하여 출력
         cartItems.stream()// 스트림으로 변환
                 .collect(Collectors.groupingBy(item -> item, Collectors.counting())) // 개수 미리 계산
                 .entrySet().stream() // Map을 스트림으로 변환
