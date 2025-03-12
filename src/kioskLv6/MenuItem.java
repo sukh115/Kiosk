@@ -8,7 +8,7 @@ public class MenuItem {
     private final String description; // 메뉴 설명
 
     // 생성자
-    public MenuItem(Integer num,String name, double price, String description) {
+    public MenuItem(Integer num, String name, double price, String description) {
         this.num = num;
         this.name = name;
         this.price = price;
@@ -32,6 +32,6 @@ public class MenuItem {
 
     // 메뉴 정보를 출력하는 메서드
     public void display() {
-        System.out.println(num +". " + name + " | W " + price + " | " + description);
+        System.out.println(num + ". " + name + " | W " + price + " | " + description);
     }
 }

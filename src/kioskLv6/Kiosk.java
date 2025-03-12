@@ -48,6 +48,7 @@ public class Kiosk {
         System.out.println("3. 주문하기");
         System.out.println("0. 종료");
     }
+
     // 카테고리 선택 화면
     private void selectCategory() {
         while (true) {
@@ -70,6 +71,7 @@ public class Kiosk {
             }
         }
     }
+
     // 메뉴 아이템 선택 화면
     private void selectMenuItem(Menu selectedMenu) {
         while (true) {
@@ -121,9 +123,9 @@ public class Kiosk {
             IntStream.range(0, discounts.length)
                     .forEach(i -> System.out.println(
                             String.format("%d. %s || %.0f%%",
-                                            i + 1,
-                                            discounts[i].getDiscountCategory(),
-                                            discounts[i].getDiscountRate() * 100)
+                                    i + 1,
+                                    discounts[i].getDiscountCategory(),
+                                    discounts[i].getDiscountRate() * 100)
                     ));
 
 

@@ -2,18 +2,18 @@ package kioskLv6;
 
 // 열거형
 public enum Discount {
-    SOLDIER("군인",0.15),
-    STUDENT("학생",0.1),
-    VIP("VIP",0.2),
+    SOLDIER("군인", 0.15),
+    STUDENT("학생", 0.1),
+    VIP("VIP", 0.2),
     DICOUNTCOUPON("50프로 할인 쿠폰", 0.5),
-    NOONE("일반",0.0);
+    NOONE("일반", 0.0);
 
     // 속성
     private final String discountCategory; // 할인 카테고리 이름
     private final double discountRate; // 할인율
 
     // 생성자
-    Discount(String discountCategory, double discountRate){
+    Discount(String discountCategory, double discountRate) {
         this.discountCategory = discountCategory;
         this.discountRate = discountRate;
     }

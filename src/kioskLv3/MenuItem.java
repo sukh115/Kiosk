@@ -6,7 +6,7 @@ public class MenuItem {
     private double price;
     private String description;
 
-    public MenuItem(Integer num,String name, double price, String description) {
+    public MenuItem(Integer num, String name, double price, String description) {
         this.num = num;
         this.name = name;
         this.price = price;
@@ -33,6 +33,6 @@ public class MenuItem {
 
 
     public void display() {
-        System.out.println(num +". " + name + " | W " + price + " | " + description);
+        System.out.println(num + ". " + name + " | W " + price + " | " + description);
     }
 }

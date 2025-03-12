@@ -57,7 +57,6 @@ public class Cart {
     }
 
 
-
     // 총 금액 계산
     public double calculateTotal() {
         double total = 0;
@@ -68,7 +67,6 @@ public class Cart {
     }
 
 
-
     // 주문 완료 후 초기화
     public void checkout(Discount selectedDiscount) {
         if (cartItems.isEmpty()) {
@@ -76,12 +74,12 @@ public class Cart {
             return;
         }
 
-            double totalBeforeDiscount = calculateTotal();  // 할인 전 총 금액
-            double totalAfterDiscount = selectedDiscount.applyDisCount(totalBeforeDiscount); // 할인 적용 후 금액
+        double totalBeforeDiscount = calculateTotal();  // 할인 전 총 금액
+        double totalAfterDiscount = selectedDiscount.applyDisCount(totalBeforeDiscount); // 할인 적용 후 금액
 
-            System.out.println("주문이 완료되었습니다!");
-            System.out.println(selectedDiscount.getDiscountCategory() + "할인 적용 후 총 결제 금액: W " + (totalAfterDiscount));
-            cartItems.clear();  // 장바구니 초기화
+        System.out.println("주문이 완료되었습니다!");
+        System.out.println(selectedDiscount.getDiscountCategory() + "할인 적용 후 총 결제 금액: W " + (totalAfterDiscount));
+        cartItems.clear();  // 장바구니 초기화
 
     }
 }
