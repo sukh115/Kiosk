@@ -9,11 +9,11 @@ public class MenuData {
         List<Menu> menus = new ArrayList<>();
 
         // 햄버거 메뉴 항목 추가
-        List<MenuItem> bugerItems = new ArrayList<>();
-        bugerItems.add(new MenuItem(1, "ShackBurger", 10600, "토마토, 양상추, 쉑소스가 토핑된 치즈버거"));
-        bugerItems.add(new MenuItem(2, "WhopperBurger", 6800, "차원이 다른 크기 와퍼"));
-        bugerItems.add(new MenuItem(3, "Cheeseburger", 6900, "포테이토 번과 비프패티, 치즈가 토핑된 치즈버거"));
-        bugerItems.add(new MenuItem(4, "BigMac", 5500, "참깨빵 위에 순쇠고기 패티2장 특별한 소스 양상추"));
+        List<MenuItem> burgerItems = new ArrayList<>();
+        burgerItems.add(new MenuItem(1, "ShackBurger", 10600, "토마토, 양상추, 쉑소스가 토핑된 치즈버거"));
+        burgerItems.add(new MenuItem(2, "WhopperBurger", 6800, "차원이 다른 크기 와퍼"));
+        burgerItems.add(new MenuItem(3, "Cheeseburger", 6900, "포테이토 번과 비프패티, 치즈가 토핑된 치즈버거"));
+        burgerItems.add(new MenuItem(4, "BigMac", 5500, "참깨빵 위에 순쇠고기 패티2장 특별한 소스 양상추"));
 
         // 음료수 메뉴 항목 추가
         List<MenuItem> drinkItems = new ArrayList<>();
@@ -32,7 +32,7 @@ public class MenuData {
 
 
         // 가게 카테고리 추가
-        menus.add(new Menu("버거", bugerItems));
+        menus.add(new Menu("버거", burgerItems));
         menus.add(new Menu("음료", drinkItems));
         menus.add(new Menu("사이드", sideItems));
 

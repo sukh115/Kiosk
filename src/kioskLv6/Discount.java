@@ -8,7 +8,7 @@ public enum Discount {
     SOLDIER("군인", 0.15),
     STUDENT("학생", 0.1),
     VIP("VIP", 0.2),
-    DICOUNTCOUPON("50프로 할인 쿠폰", 0.5),
+    DISCOUNTCOUPON("50프로 할인 쿠폰", 0.5),
     NOONE("일반", 0.0);
 
     // 속성
@@ -37,15 +37,14 @@ public enum Discount {
     }
 
     // 할인 목록을 출력하는 메서드
-    public static void printDiscountList(List<Discount> discounts){
-
+    public static void printDiscountList(){
         // 할인 카테고리 목록
-        IntStream.range(0, discounts.size())
+        IntStream.range(0, Discount.values().length)
                 .forEach(i -> System.out.println(
                         String.format("%d. %s || %.0f%%",
                                 i + 1,
-                                discounts.get(i).getDiscountCategory(),
-                                discounts.get(i).getDiscountRate() * 100)
+                                Discount.values()[i].getDiscountCategory(),
+                                Discount.values()[i].getDiscountRate() * 100)
                 ));
     }
 }

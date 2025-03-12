@@ -1,7 +1,6 @@
 package kioskLv6;
 
 import java.util.*;
-import java.util.stream.IntStream;
 
 // 키오스크 시스템 관리 클래스
 public class Kiosk {
@@ -60,7 +59,7 @@ public class Kiosk {
             System.out.print("메뉴 카테고리를 선택해주세요: ");
 
             int choiceCategory = getValidIntInput(); // 입력 유효성 검사
-            if (returnHome(choiceCategory)) return;  // 홈 또는 뒤로가기 처리
+            if (returnOrHome(choiceCategory)) return;  // 홈 또는 뒤로가기 처리
 
             // 카테고리 옵션을 선택했을 때 해당 항목을 적용
             if (choiceCategory > 0 && choiceCategory <= menus.size()) {
@@ -80,7 +79,7 @@ public class Kiosk {
             System.out.print("원하는 메뉴를 선택하세요: ");
 
             int option = getValidIntInput(); // 입력 유효성 검사
-            if (returnHome(option)) return;  // 홈 또는 뒤로가기 처리
+            if (returnOrHome(option)) return;  // 홈 또는 뒤로가기 처리
 
             List<MenuItem> items = selectedMenu.getMenuItems();
 
@@ -103,7 +102,7 @@ public class Kiosk {
             System.out.print("선택: ");
 
             int option = getValidIntInput(); // 입력 유효성 검사
-            if (returnHome(option)) return;  // 홈 또는 뒤로가기 처리
+            if (returnOrHome(option)) return;  // 홈 또는 뒤로가기 처리
 
             if (option == 1) {
                 System.out.print("삭제할 메뉴 이름을 입력하세요 ");
@@ -117,18 +116,18 @@ public class Kiosk {
 
     // 주문 처리 메서드
     private void checkout() {
-        List<Discount> discounts = Arrays.asList(Discount.values());
+
         while (true) {  // 올바른 입력이 나올 때까지 반복
             System.out.println("\n=== 할인 카테고리 선택 ===");
 
-            Discount.printDiscountList(discounts); // 할인 목록 출력
+            Discount.printDiscountList(); // 할인 목록 출력
 
             int option = getValidIntInput();  // 입력 유효성 검사
-            if (returnHome(option)) return;  // 홈 또는 뒤로가기 처리
+            if (returnOrHome(option)) return;  // 홈 또는 뒤로가기 처리
 
             // 할인 옵션을 선택 했을 때 해당 항목을 적용
-            if (option >= 1 && option <= discounts.size()) {
-                Discount selectedDiscount = discounts.get(option - 1);
+            if (option >= 1 && option <= Discount.values().length) {
+                Discount selectedDiscount = Discount.values()[option - 1];
                 System.out.println(selectedDiscount.getDiscountCategory() + " 할인 적용!");
                 cart.checkout(selectedDiscount);
                 return;  // 결제 후 checkout 종료
@@ -141,19 +140,19 @@ public class Kiosk {
 
     // 정수 입력 검증 메서드
     private int getValidIntInput() {
-        try {
-            int input = scanner.nextInt();
-            scanner.nextLine();  // 개행 문자 제거
-            return input;
-        } catch (InputMismatchException e) {
-            scanner.nextLine();  // 버퍼 비우기
-            System.out.println("️유효하지 않은 입력입니다. 홈으로 이동합니다.");
-            return -1;  // 잘못된 입력 시 홈으로 이동
+        while (true) {
+            try {
+                int input = Integer.parseInt(scanner.nextLine().trim());
+                return input;
+            } catch (NumberFormatException e) {
+                System.out.println("유효하지 않은 입력입니다. 숫자를 입력하세요.");
+            }
         }
     }
 
+
     // 뒤로 가기 및 홈 이동 처리
-    private boolean returnHome(int option) {
+    private boolean returnOrHome(int option) {
         if (option == -1) {
             System.out.println("홈으로 이동합니다.");
             start();  // 홈으로 이동 (메인 메뉴 다시 실행)
