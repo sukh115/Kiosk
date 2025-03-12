@@ -1,5 +1,6 @@
 package kioskLv6;
 
+import java.util.List;
 import java.util.stream.IntStream;
 
 // 열거형
@@ -12,10 +13,10 @@ public enum Discount {
 
     // 속성
     private final String discountCategory; // 할인 카테고리 이름
-    private final double discountRate; // 할인율
+    private final Double discountRate; // 할인율
 
     // 생성자
-    Discount(String discountCategory, double discountRate) {
+    Discount(String discountCategory, Double discountRate) {
         this.discountCategory = discountCategory;
         this.discountRate = discountRate;
     }
@@ -26,25 +27,25 @@ public enum Discount {
     }
 
     // 할인율 카테고리 게터
-    public double getDiscountRate() {
+    public Double getDiscountRate() {
         return discountRate;
     }
 
     // 할인율을 적용하는 메서드
-    public double applyDiscount(double amount) {
+    public Double applyDiscount(Double amount) {
         return amount * (1 - discountRate);
     }
 
     // 할인 목록을 출력하는 메서드
-    public static void printDiscountList(Discount[] discounts){
+    public static void printDiscountList(List<Discount> discounts){
 
         // 할인 카테고리 목록
-        IntStream.range(0, discounts.length)
+        IntStream.range(0, discounts.size())
                 .forEach(i -> System.out.println(
                         String.format("%d. %s || %.0f%%",
                                 i + 1,
-                                discounts[i].getDiscountCategory(),
-                                discounts[i].getDiscountRate() * 100)
+                                discounts.get(i).getDiscountCategory(),
+                                discounts.get(i).getDiscountRate() * 100)
                 ));
     }
 }

@@ -4,11 +4,11 @@ package kioskLv6;
 public class MenuItem {
     private final Integer num; // 메뉴 번호
     private final String name; // 메뉴 이름
-    private final double price; // 메뉴 가격
+    private final Integer price; // 메뉴 가격
     private final String description; // 메뉴 설명
 
     // 생성자
-    public MenuItem(Integer num, String name, double price, String description) {
+    public MenuItem(Integer num, String name, Integer price, String description) {
         this.num = num;
         this.name = name;
         this.price = price;
@@ -21,7 +21,7 @@ public class MenuItem {
     }
 
     // 메뉴 가격 게터
-    public double getPrice() {
+    public Integer getPrice() {
         return price;
     }
 

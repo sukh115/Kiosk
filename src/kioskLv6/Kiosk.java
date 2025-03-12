@@ -115,7 +115,7 @@ public class Kiosk {
 
     // 주문 처리 메서드
     private void checkout() {
-        Discount[] discounts = Discount.values();
+        List<Discount> discounts = Arrays.asList(Discount.values());
         while (true) {  // 올바른 입력이 나올 때까지 반복
             System.out.println("\n=== 할인 카테고리 선택 ===");
 
@@ -124,8 +124,8 @@ public class Kiosk {
             int option = getValidIntInput();  // 입력 유효성 검사
             if (returnHome(option)) return;  // 홈 또는 뒤로가기 처리
 
-            if (option >= 1 && option <= discounts.length) {
-                Discount selectedDiscount = discounts[option - 1];
+            if (option >= 1 && option <= discounts.size()) {
+                Discount selectedDiscount = discounts.get(option - 1);
                 System.out.println(selectedDiscount.getDiscountCategory() + " 할인 적용!");
                 cart.checkout(selectedDiscount);
                 return;  // 결제 후 checkout 종료
