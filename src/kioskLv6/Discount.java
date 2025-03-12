@@ -31,7 +31,7 @@ public enum Discount {
     }
 
     // 할인율을 적용하는 메서드
-    public double applyDisCount(double amount) {
+    public double applyDiscount(double amount) {
         return amount * (1 - discountRate);
     }
 

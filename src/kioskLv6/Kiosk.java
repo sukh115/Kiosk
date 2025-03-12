@@ -104,9 +104,9 @@ public class Kiosk {
             if (returnHome(option)) return;  // 홈 또는 뒤로가기 처리
 
             if (option == 1) {
-                System.out.print("삭제할 항목 번호 입력: ");
-                int index = getValidIntInput();
-                cart.removeItem(index - 1);
+                System.out.print("삭제할 메뉴 이름을 입력하세요 ");
+                String itemName = scanner.nextLine().trim();
+                cart.removeItemByName(itemName);
             } else {
                 System.out.println("잘못된 입력입니다.");
             }
