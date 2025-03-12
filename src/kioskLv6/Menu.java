@@ -7,6 +7,7 @@ public class Menu {
     private final String category; // 메뉴 카테고리 이름
     private final List<MenuItem> menuItems; // 해당 카테고리의 메뉴 목록
 
+    // 생성자
     public Menu(String category, List<MenuItem> menuItems) {
         this.category = category;
         this.menuItems = menuItems;

@@ -31,7 +31,7 @@ public class Kiosk {
                 case 1 -> selectCategory();  // 카테고리 선택
                 case 2 -> viewCart();        // 장바구니 보기
                 case 3 -> checkout();        // 주문하기
-                case 0 -> {
+                case 0 -> {                  // 종료
                     System.out.println("프로그램을 종료합니다.");
                     return;
                 }
@@ -62,7 +62,7 @@ public class Kiosk {
             int choiceCategory = getValidIntInput(); // 입력 유효성 검사
             if (returnHome(choiceCategory)) return;  // 홈 또는 뒤로가기 처리
 
-
+            // 카테고리 옵션을 선택했을 때 해당 항목을 적용
             if (choiceCategory > 0 && choiceCategory <= menus.size()) {
                 Menu selectedMenu = menus.get(choiceCategory - 1);
                 selectMenuItem(selectedMenu);
@@ -83,6 +83,8 @@ public class Kiosk {
             if (returnHome(option)) return;  // 홈 또는 뒤로가기 처리
 
             List<MenuItem> items = selectedMenu.getMenuItems();
+
+            // 메뉴 옵션을 선택 했을때 해당 항목을 적용
             if (option > 0 && option <= items.size()) {
                 MenuItem selectedItem = items.get(option - 1);
                 System.out.println(selectedItem.getName() + " 선택! " + selectedItem.getDescription());
@@ -119,11 +121,12 @@ public class Kiosk {
         while (true) {  // 올바른 입력이 나올 때까지 반복
             System.out.println("\n=== 할인 카테고리 선택 ===");
 
-            Discount.printDiscountList(discounts);
+            Discount.printDiscountList(discounts); // 할인 목록 출력
 
             int option = getValidIntInput();  // 입력 유효성 검사
             if (returnHome(option)) return;  // 홈 또는 뒤로가기 처리
 
+            // 할인 옵션을 선택 했을 때 해당 항목을 적용
             if (option >= 1 && option <= discounts.size()) {
                 Discount selectedDiscount = discounts.get(option - 1);
                 System.out.println(selectedDiscount.getDiscountCategory() + " 할인 적용!");
