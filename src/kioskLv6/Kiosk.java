@@ -115,19 +115,11 @@ public class Kiosk {
 
     // 주문 처리 메서드
     private void checkout() {
+        Discount[] discounts = Discount.values();
         while (true) {  // 올바른 입력이 나올 때까지 반복
             System.out.println("\n=== 할인 카테고리 선택 ===");
-            Discount[] discounts = Discount.values();
 
-            // 할인 카테고리 목록
-            IntStream.range(0, discounts.length)
-                    .forEach(i -> System.out.println(
-                            String.format("%d. %s || %.0f%%",
-                                    i + 1,
-                                    discounts[i].getDiscountCategory(),
-                                    discounts[i].getDiscountRate() * 100)
-                    ));
-
+            Discount.printDiscountList(discounts);
 
             int option = getValidIntInput();  // 입력 유효성 검사
             if (returnHome(option)) return;  // 홈 또는 뒤로가기 처리

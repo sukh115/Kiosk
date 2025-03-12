@@ -1,5 +1,7 @@
 package kioskLv6;
 
+import java.util.stream.IntStream;
+
 // 열거형
 public enum Discount {
     SOLDIER("군인", 0.15),
@@ -31,5 +33,18 @@ public enum Discount {
     // 할인율을 적용하는 메서드
     public double applyDisCount(double amount) {
         return amount * (1 - discountRate);
+    }
+
+    // 할인 목록을 출력하는 메서드
+    public static void printDiscountList(Discount[] discounts){
+
+        // 할인 카테고리 목록
+        IntStream.range(0, discounts.length)
+                .forEach(i -> System.out.println(
+                        String.format("%d. %s || %.0f%%",
+                                i + 1,
+                                discounts[i].getDiscountCategory(),
+                                discounts[i].getDiscountRate() * 100)
+                ));
     }
 }
