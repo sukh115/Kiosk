@@ -29,7 +29,7 @@ public class Cart {
     }
 
     // 장바구니 목록 출력
-    public void displayCart() {
+    public void displayCartItems() {
         if (cartItems.isEmpty()) {
             System.out.println("장바구니가 비어 있습니다.");
             return;
@@ -43,7 +43,7 @@ public class Cart {
             System.out.printf("%s | %d개 | W %.2f%n", item.getName(), count, totalItemPrice);
         });
 
-        System.out.println("총 금액: W " + calculateTotal());
+        System.out.println("총 금액: W " + calculateTotalPrice());
     }
 
     // 삭제할 키값 찾기
@@ -61,7 +61,7 @@ public class Cart {
 
 
     // 총 금액 계산
-    public double calculateTotal() {
+    public double calculateTotalPrice() {
         // 스트림으로 총 금액 계산
         return cartItems.entrySet().stream()
                 .mapToDouble(total -> total.getKey().getPrice() * total.getValue())
@@ -76,7 +76,7 @@ public class Cart {
             return;
         }
 
-        double totalBeforeDiscount = calculateTotal();  // 할인 전 총 금액
+        double totalBeforeDiscount = calculateTotalPrice();  // 할인 전 총 금액
         double totalAfterDiscount = selectedDiscount.applyDiscount(totalBeforeDiscount); // 할인 적용 후 금액
 
         System.out.println("주문이 완료되었습니다!");

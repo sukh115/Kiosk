@@ -74,7 +74,7 @@ public class Kiosk {
     // 메뉴 아이템 선택 화면
     private void selectMenuItem(Menu selectedMenu) {
         while (true) {
-            selectedMenu.displayMenu(); // 메뉴 출력
+            selectedMenu.printMenuItems(); // 메뉴 출력
             System.out.println("0. 뒤로 가기 | -1. 홈으로 가기");
             System.out.print("원하는 메뉴를 선택하세요: ");
 
@@ -97,7 +97,7 @@ public class Kiosk {
     // 장바구니 보기 화면
     private void viewCart() {
         while (true) {
-            cart.displayCart(); // 장바구니 출력;
+            cart.displayCartItems(); // 장바구니 출력;
             System.out.println("\n[1] 항목 삭제 | 0. 뒤로 가기 | -1. 홈으로 가기");
             System.out.print("선택: ");
 
