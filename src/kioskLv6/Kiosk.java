@@ -32,6 +32,7 @@ public class Kiosk {
                 case 1 -> selectCategory();  // 카테고리 선택
                 case 2 -> viewCart();        // 장바구니 보기
                 case 3 -> checkout();        // 주문하기
+                case 4 -> orderHistory.displayOrdersList(); // 주문 내역 출력
                 case 0 -> {                  // 종료
                     System.out.println("프로그램을 종료합니다.");
                     return;
@@ -47,6 +48,7 @@ public class Kiosk {
         System.out.println("1. 메뉴 선택");
         System.out.println("2. 장바구니 보기");
         System.out.println("3. 주문하기");
+        System.out.println("4. 주문 내역");
         System.out.println("0. 종료");
     }
 
