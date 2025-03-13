@@ -52,9 +52,9 @@ public class Cart {
                 .filter(item -> item.getName().equalsIgnoreCase(itemName))
                 .findFirst();
 
-        if(removeTOItem.isPresent()) {
+        if (removeTOItem.isPresent()) {
             removeItem(removeTOItem.get());
-        }else {
+        } else {
             System.out.println("해당 메뉴가 장바구니에 없습니다.");
         }
     }

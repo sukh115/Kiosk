@@ -26,8 +26,9 @@ public class Menu {
     // 해당 카테고리 메뉴를 출력하는 메서드
     public void displayMenu() {
         System.out.println("[" + category + "]");
-        for (MenuItem item : menuItems) {
-            item.display();
+        for (int i = 0; i < menuItems.size(); i++) {
+            System.out.print((i + 1) + ". ");
+            menuItems.get(i).display();
         }
     }
 }

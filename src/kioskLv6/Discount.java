@@ -1,6 +1,5 @@
 package kioskLv6;
 
-import java.util.List;
 import java.util.stream.IntStream;
 
 // 열거형
@@ -9,7 +8,7 @@ public enum Discount {
     STUDENT("학생", 0.1),
     VIP("VIP", 0.2),
     DISCOUNTCOUPON("50프로 할인 쿠폰", 0.5),
-    NOONE("일반", 0.0);
+    NO_ONE("일반", 0.0);
 
     // 속성
     private final String discountCategory; // 할인 카테고리 이름
