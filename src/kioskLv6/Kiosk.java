@@ -55,8 +55,7 @@ public class Kiosk {
             for (int i = 0; i < menus.size(); i++) {
                 System.out.println((i + 1) + ". " + menus.get(i).getCategory());
             }
-            System.out.println("할인 옵션을 선택하세요 (0. 뒤로 가기 | -1. 홈으로 가기)");
-            System.out.print("메뉴 카테고리를 선택해주세요: ");
+            System.out.print("메뉴 카테고리를 선택해주세요: (0. 뒤로 가기 | -1. 홈으로 가기)\"");
 
             int choiceCategory = getValidIntInput(); // 입력 유효성 검사
             if (returnOrHome(choiceCategory)) return;  // 홈 또는 뒤로가기 처리
@@ -121,6 +120,10 @@ public class Kiosk {
             System.out.println("\n=== 할인 카테고리 선택 ===");
 
             Discount.printDiscountList(); // 할인 목록 출력
+
+            System.out.println("총 금액: W " + cart.calculateTotalPrice()); // 할인 전 총 금액 출력
+            System.out.println("할인 옵션을 선택하세요 (0. 뒤로 가기 | -1. 홈으로 가기)");
+            System.out.print("선택: ");
 
             int option = getValidIntInput();  // 입력 유효성 검사
             if (returnOrHome(option)) return;  // 홈 또는 뒤로가기 처리
