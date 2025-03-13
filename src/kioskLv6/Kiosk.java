@@ -7,7 +7,8 @@ public class Kiosk {
     // 속성
     private final List<Menu> menus;
     private final Scanner scanner;
-    private final Cart cart;
+    private final Cart cart = new Cart();
+    private final OrderHistory orderHistory = new OrderHistory();
     private static final int OPTION_HOME = -1;
     private static final int OPTION_BACK = 0;
 
@@ -15,7 +16,6 @@ public class Kiosk {
     public Kiosk(List<Menu> menus, Scanner scanner) {
         this.menus = menus;
         this.scanner = scanner;
-        this.cart = new Cart();
     }
 
     // 기능
@@ -117,31 +117,64 @@ public class Kiosk {
 
     // 주문 처리 메서드
     private void checkout() {
+        while (true) {
+            // 할인 방법 선택
+            Discount selectedDiscount = selectDiscount();
+            if (selectedDiscount == null) return;
 
+            // 결제 방법 선택
+            PaymentMethod selectedPayment = selectPaymentMethod();
+            if (selectedPayment == null) return;
+
+            Order newOrder = cart.createOrder(selectedDiscount, selectedPayment);
+            orderHistory.addOrder(newOrder);
+            newOrder.printReceipt();
+            return;
+        }
+    }
+
+    // 할인 목록 적용 메서드
+    private Discount selectDiscount(){
         while (true) {  // 올바른 입력이 나올 때까지 반복
             System.out.println("\n=== 할인 카테고리 선택 ===");
-
             Discount.displayDiscountOptions(); // 할인 목록 출력
-
-            System.out.println("총 금액: W " + cart.calculateTotalPrice()); // 할인 전 총 금액 출력
             System.out.println("할인 옵션을 선택하세요 (0. 뒤로 가기 | -1. 홈으로 가기)");
             System.out.print("선택: ");
 
             int option = getValidIntInput();  // 입력 유효성 검사
-            if (checkNavigationOption(option)) return;  // 홈 또는 뒤로가기 처리
+            if (checkNavigationOption(option)) return null;
 
             // 할인 옵션을 선택 했을 때 해당 항목을 적용
             if (option >= 1 && option <= Discount.values().length) {
                 Discount selectedDiscount = Discount.values()[option - 1];
                 System.out.println(selectedDiscount.getDiscountCategory() + " 할인 적용!");
-                cart.checkout(selectedDiscount);
-                return;  // 결제 후 checkout 종료
+                return selectedDiscount;
             } else {
                 System.out.println("잘못된 선택입니다. 다시 입력해주세요.");
-                continue;  // 다시 할인 선택 화면으로 돌아감
             }
         }
     }
+
+    // 결제 방법 선택 메서드
+    private PaymentMethod selectPaymentMethod() {
+        while (true) {
+            System.out.println("\n=== 결제 방법 선택 ===");
+            PaymentMethod.displayPaymentOption();
+
+            System.out.println("결제 방법을 선택하세요 (0. 뒤로 가기 | -1. 홈으로 가기)");
+            System.out.print("선택: ");
+
+            int option = getValidIntInput();
+            if (checkNavigationOption(option)) return null;
+
+            if (option >= 1 && option <= PaymentMethod.values().length) {
+                return PaymentMethod.values()[option - 1];
+            }
+
+            System.out.println("잘못된 선택입니다. 다시 입력해주세요.");
+        }
+    }
+
 
     // 정수 입력 검증 메서드
     private int getValidIntInput() {
