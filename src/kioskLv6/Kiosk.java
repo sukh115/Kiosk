@@ -22,41 +22,37 @@ public class Kiosk {
 
     // 키오스크 메인 실행 메서드
     public void start() {
-        try {
-
-
             while (true) {
                 displayMainMenu(); // 메인 메뉴 출력
                 System.out.print("메뉴를 선택해주세요 : ");
                 int option = getValidIntInput(); // 사용자 입력 받기
 
                 switch (option) {
-                    case 1 -> selectCategory();  // 카테고리 선택
-                    case 2 -> viewCart();        // 장바구니 보기
-                    case 3 -> checkout();        // 주문하기
-                    case 4 -> orderHistory.displayOrdersList(); // 주문 내역 출력
                     case 0 -> {                  // 종료
                         System.out.println("프로그램을 종료합니다.");
                         return;
                     }
+                    case 1 -> {    // 카테고리 선택
+                        selectCategory();
+                    }
+                    case 2 -> viewCart();        // 장바구니 보기
+                    case 3 -> checkout();        // 주문하기
+                    case 4 -> orderHistory.displayOrdersList(); // 주문 내역 출력
+
                     default -> System.out.println("잘못된 입력입니다. 다시 선택해주세요.");
                 }
             }
-        } catch (ReturnToHomeException e) {
-            // 홈 이동 예외 발생 시 start() 실행을 강제 종료
-            System.out.println("\n 홈 화면으로 돌아갑니다.\n");
-            start(); // 다시 start() 실행
-        }
     }
 
     // 메인 메뉴 출력
     private void displayMainMenu() {
         System.out.println("\n=== 키오스크 ===");
+        System.out.println("0. 종료");
         System.out.println("1. 메뉴 선택");
         System.out.println("2. 장바구니 보기");
         System.out.println("3. 주문하기");
         System.out.println("4. 주문 내역");
-        System.out.println("0. 종료");
+
     }
 
     // 카테고리 선택 화면
@@ -74,35 +70,33 @@ public class Kiosk {
             // 카테고리 옵션을 선택했을 때 해당 항목을 적용
             if (choiceCategory > 0 && choiceCategory <= menus.size()) {
                 Menu selectedMenu = menus.get(choiceCategory - 1);
-                selectMenuItem(selectedMenu);
+                while (true) {     // 메뉴 아이템 선택 화면
+                    selectedMenu.printMenuItems(); // 메뉴 출력
+                    System.out.println("0. 뒤로 가기 | -1. 홈으로 가기");
+                    System.out.print("원하는 메뉴를 선택하세요: ");
+
+                    int option = getValidIntInput(); // 입력 유효성 검사
+                    if (checkNavigationOption(option)) return;  // 홈 또는 뒤로가기 처리
+
+                    List<MenuItem> items = selectedMenu.getMenuItems();
+
+                    // 메뉴 옵션을 선택 했을때 해당 항목을 적용
+                    if (option > 0 && option <= items.size()) {
+                        MenuItem selectedItem = items.get(option - 1);
+                        System.out.println(selectedItem.getName() + " 선택! " + selectedItem.getDescription());
+                        cart.addItem(selectedItem);
+                    } else {
+                        System.out.println("잘못된 선택입니다. 다시 입력하세요.");
+                    }
+                }
             } else {
                 System.out.println("잘못된 입력입니다. 다시 선택해주세요.");
             }
         }
     }
 
-    // 메뉴 아이템 선택 화면
-    private void selectMenuItem(Menu selectedMenu) {
-        while (true) {
-            selectedMenu.printMenuItems(); // 메뉴 출력
-            System.out.println("0. 뒤로 가기 | -1. 홈으로 가기");
-            System.out.print("원하는 메뉴를 선택하세요: ");
 
-            int option = getValidIntInput(); // 입력 유효성 검사
-            if (checkNavigationOption(option)) return;  // 홈 또는 뒤로가기 처리
 
-            List<MenuItem> items = selectedMenu.getMenuItems();
-
-            // 메뉴 옵션을 선택 했을때 해당 항목을 적용
-            if (option > 0 && option <= items.size()) {
-                MenuItem selectedItem = items.get(option - 1);
-                System.out.println(selectedItem.getName() + " 선택! " + selectedItem.getDescription());
-                cart.addItem(selectedItem);
-            } else {
-                System.out.println("잘못된 선택입니다. 다시 입력하세요.");
-            }
-        }
-    }
 
     // 장바구니 보기 화면
     private void viewCart() {
@@ -200,7 +194,7 @@ public class Kiosk {
     private boolean checkNavigationOption(int option) {
         if (option == OPTION_HOME) {
             System.out.println("홈으로 이동합니다.");
-            throw new ReturnToHomeException();
+            return true;
         }
         if (option == OPTION_BACK) {
             System.out.println("이전 화면으로 이동합니다.");
