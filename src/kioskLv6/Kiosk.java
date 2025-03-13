@@ -8,6 +8,8 @@ public class Kiosk {
     private final List<Menu> menus;
     private final Scanner scanner;
     private final Cart cart;
+    private static final int OPTION_HOME = -1;
+    private static final int OPTION_BACK = 0;
 
     // 생성자
     public Kiosk(List<Menu> menus, Scanner scanner) {
@@ -58,7 +60,7 @@ public class Kiosk {
             System.out.print("메뉴 카테고리를 선택해주세요: (0. 뒤로 가기 | -1. 홈으로 가기)\"");
 
             int choiceCategory = getValidIntInput(); // 입력 유효성 검사
-            if (returnOrHome(choiceCategory)) return;  // 홈 또는 뒤로가기 처리
+            if (checkNavigationOption(choiceCategory)) return;  // 홈 또는 뒤로가기 처리
 
             // 카테고리 옵션을 선택했을 때 해당 항목을 적용
             if (choiceCategory > 0 && choiceCategory <= menus.size()) {
@@ -78,7 +80,7 @@ public class Kiosk {
             System.out.print("원하는 메뉴를 선택하세요: ");
 
             int option = getValidIntInput(); // 입력 유효성 검사
-            if (returnOrHome(option)) return;  // 홈 또는 뒤로가기 처리
+            if (checkNavigationOption(option)) return;  // 홈 또는 뒤로가기 처리
 
             List<MenuItem> items = selectedMenu.getMenuItems();
 
@@ -101,7 +103,7 @@ public class Kiosk {
             System.out.print("선택: ");
 
             int option = getValidIntInput(); // 입력 유효성 검사
-            if (returnOrHome(option)) return;  // 홈 또는 뒤로가기 처리
+            if (checkNavigationOption(option)) return;  // 홈 또는 뒤로가기 처리
 
             if (option == 1) {
                 System.out.print("삭제할 메뉴 이름을 입력하세요 ");
@@ -126,7 +128,7 @@ public class Kiosk {
             System.out.print("선택: ");
 
             int option = getValidIntInput();  // 입력 유효성 검사
-            if (returnOrHome(option)) return;  // 홈 또는 뒤로가기 처리
+            if (checkNavigationOption(option)) return;  // 홈 또는 뒤로가기 처리
 
             // 할인 옵션을 선택 했을 때 해당 항목을 적용
             if (option >= 1 && option <= Discount.values().length) {
@@ -152,15 +154,14 @@ public class Kiosk {
         }
     }
 
-    // 상수로 관리
     // 뒤로 가기 및 홈 이동 처리
-    private boolean returnOrHome(int option) {
-        if (option == -1) {
+    private boolean checkNavigationOption(int option) {
+        if (option == OPTION_HOME ) {
             System.out.println("홈으로 이동합니다.");
             start();  // 홈으로 이동 (메인 메뉴 다시 실행)
             return true;
         }
-        if (option == 0) {
+        if (option == OPTION_BACK ) {
             System.out.println("이전 화면으로 이동합니다.");
             return true;
         }
