@@ -48,12 +48,12 @@ public class Cart {
 
     // 삭제할 키값 찾기
     public void removeItemByName(String itemName) {
-        Optional<MenuItem> removeTOItem = cartItems.keySet().stream()
+        Optional<MenuItem> removeToItem = cartItems.keySet().stream()
                 .filter(item -> item.getName().equalsIgnoreCase(itemName))
                 .findFirst();
 
-        if (removeTOItem.isPresent()) {
-            removeItem(removeTOItem.get());
+        if (removeToItem.isPresent()) {
+            removeItem(removeToItem.get());
         } else {
             System.out.println("해당 메뉴가 장바구니에 없습니다.");
         }
@@ -61,7 +61,7 @@ public class Cart {
 
 
     // 총 금액 계산
-    public double calculateTotalPrice() {
+    public Double calculateTotalPrice() {
         // 스트림으로 총 금액 계산
         return cartItems.entrySet().stream()
                 .mapToDouble(total -> total.getKey().getPrice() * total.getValue())
@@ -76,8 +76,8 @@ public class Cart {
             return;
         }
 
-        double totalBeforeDiscount = calculateTotalPrice();  // 할인 전 총 금액
-        double totalAfterDiscount = selectedDiscount.applyDiscount(totalBeforeDiscount); // 할인 적용 후 금액
+        Double totalBeforeDiscount = calculateTotalPrice();  // 할인 전 총 금액
+        Double totalAfterDiscount = selectedDiscount.applyDiscount(totalBeforeDiscount); // 할인 적용 후 금액
 
         System.out.println("주문이 완료되었습니다!");
         System.out.println(selectedDiscount.getDiscountCategory() + "할인 적용 후 총 결제 금액: W " + (totalAfterDiscount));

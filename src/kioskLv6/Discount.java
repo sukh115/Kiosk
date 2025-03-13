@@ -36,7 +36,7 @@ public enum Discount {
     }
 
     // 할인 목록을 출력하는 메서드
-    public static void printDiscountList(){
+    public static void displayDiscountOptions() {
         // 할인 카테고리 목록
         IntStream.range(0, Discount.values().length)
                 .forEach(i -> System.out.println(

@@ -119,7 +119,7 @@ public class Kiosk {
         while (true) {  // 올바른 입력이 나올 때까지 반복
             System.out.println("\n=== 할인 카테고리 선택 ===");
 
-            Discount.printDiscountList(); // 할인 목록 출력
+            Discount.displayDiscountOptions(); // 할인 목록 출력
 
             System.out.println("총 금액: W " + cart.calculateTotalPrice()); // 할인 전 총 금액 출력
             System.out.println("할인 옵션을 선택하세요 (0. 뒤로 가기 | -1. 홈으로 가기)");
@@ -145,15 +145,14 @@ public class Kiosk {
     private int getValidIntInput() {
         while (true) {
             try {
-                int input = Integer.parseInt(scanner.nextLine().trim());
-                return input;
+                return Integer.parseInt(scanner.nextLine().trim());
             } catch (NumberFormatException e) {
                 System.out.println("유효하지 않은 입력입니다. 숫자를 입력하세요.");
             }
         }
     }
 
-
+    // 상수로 관리
     // 뒤로 가기 및 홈 이동 처리
     private boolean returnOrHome(int option) {
         if (option == -1) {
