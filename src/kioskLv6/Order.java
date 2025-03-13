@@ -13,7 +13,7 @@ public class Order {
     private final Double totalPrice;
 
     // 생성자
-    public Order(Map<MenuItem, Integer> items, Discount discount, PaymentMethod paymentMethod, double totalPrice) {
+    public Order(Map<MenuItem, Integer> items, Discount discount, PaymentMethod paymentMethod, Double totalPrice) {
         this.orderNumber = ORDER_SEQUENCE++;
         this.items = new LinkedHashMap<>(items);
         this.discount = discount;
