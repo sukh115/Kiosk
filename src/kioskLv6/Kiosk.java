@@ -22,23 +22,30 @@ public class Kiosk {
 
     // 키오스크 메인 실행 메서드
     public void start() {
-        while (true) {
-            displayMainMenu(); // 메인 메뉴 출력
-            System.out.print("메뉴를 선택해주세요 : ");
-            int option = getValidIntInput(); // 사용자 입력 받기
-            // 홈 또는 뒤로가기 처리
+        try {
 
-            switch (option) {
-                case 1 -> selectCategory();  // 카테고리 선택
-                case 2 -> viewCart();        // 장바구니 보기
-                case 3 -> checkout();        // 주문하기
-                case 4 -> orderHistory.displayOrdersList(); // 주문 내역 출력
-                case 0 -> {                  // 종료
-                    System.out.println("프로그램을 종료합니다.");
-                    return;
+
+            while (true) {
+                displayMainMenu(); // 메인 메뉴 출력
+                System.out.print("메뉴를 선택해주세요 : ");
+                int option = getValidIntInput(); // 사용자 입력 받기
+
+                switch (option) {
+                    case 1 -> selectCategory();  // 카테고리 선택
+                    case 2 -> viewCart();        // 장바구니 보기
+                    case 3 -> checkout();        // 주문하기
+                    case 4 -> orderHistory.displayOrdersList(); // 주문 내역 출력
+                    case 0 -> {                  // 종료
+                        System.out.println("프로그램을 종료합니다.");
+                        return;
+                    }
+                    default -> System.out.println("잘못된 입력입니다. 다시 선택해주세요.");
                 }
-                default -> System.out.println("잘못된 입력입니다. 다시 선택해주세요.");
             }
+        } catch (ReturnToHomeException e) {
+            // 홈 이동 예외 발생 시 start() 실행을 강제 종료
+            System.out.println("\n 홈 화면으로 돌아갑니다.\n");
+            start(); // 다시 start() 실행
         }
     }
 
@@ -136,7 +143,7 @@ public class Kiosk {
     }
 
     // 할인 목록 적용 메서드
-    private Discount selectDiscount(){
+    private Discount selectDiscount() {
         while (true) {  // 올바른 입력이 나올 때까지 반복
             System.out.println("\n=== 할인 카테고리 선택 ===");
             Discount.displayDiscountOptions(); // 할인 목록 출력
@@ -191,12 +198,11 @@ public class Kiosk {
 
     // 뒤로 가기 및 홈 이동 처리
     private boolean checkNavigationOption(int option) {
-        if (option == OPTION_HOME ) {
+        if (option == OPTION_HOME) {
             System.out.println("홈으로 이동합니다.");
-            start();  // 홈으로 이동 (메인 메뉴 다시 실행)
-            return true;
+            throw new ReturnToHomeException();
         }
-        if (option == OPTION_BACK ) {
+        if (option == OPTION_BACK) {
             System.out.println("이전 화면으로 이동합니다.");
             return true;
         }
