@@ -1,13 +1,5 @@
 # 키오스크 과제
 
-## 🚀 Hugging Face에서 바로 실행하기
-[![Run on Hugging Face Spaces](https://huggingface.co/spaces/YourUsername/Kiosk-Lv6/badge.svg)](https://huggingface.co/spaces/YourUsername/Kiosk-Lv6)
-
-## 📌 실행 방법
-1. 위 버튼을 클릭하면 Hugging Face Spaces에서 실행됨
-2. 웹 UI에서 "Run" 버튼 클릭하면 `kiosk.exe` 실행됨
-3. 결과가 웹 브라우저에 표시됨 🎉
-
 ## 목적
 - 객체지향 개념을 이해하고 프로그램의 흐름을 파악하는 것이 목표입니다.
 - 클린 코드 원칙을 적용하고, 추상화 수준을 균일하게 유지합니다.
