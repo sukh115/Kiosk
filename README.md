@@ -1,15 +1,12 @@
 # 키오스크 과제
 
-## GitHub Codespaces에서 바로 실행하기
+## 🚀 GitHub Codespaces에서 바로 실행하기
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/sukh115/Kiosk?quickstart=1)
 
-## 실행 방법
-1. **위 버튼을 클릭하여 GitHub Codespaces 실행**
-2. 터미널에서 아래 명령어 입력:
-   ```sh
-   javac -d out -encoding UTF-8 -sourcepath src src/kioskLv6/KioskLv6.java
-   java -cp out kioskLv6.KioskLv6
-
+## 📌 실행 방법 (자동 실행됨)
+1. 위 버튼을 클릭하면 **GitHub Codespaces가 자동으로 실행됨**
+2. Java 21이 자동으로 설치되고, Kiosk 프로그램이 실행됨
+3. 콘솔에서 Kiosk 시스템을 사용할 수 있음 🎉
 
 ## 목적
 - 객체지향 개념을 이해하고 프로그램의 흐름을 파악하는 것이 목표입니다.

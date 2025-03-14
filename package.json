@@ -1,0 +1,10 @@
+{
+  "name": "Kiosk Codespace",
+  "image": "mcr.microsoft.com/devcontainers/java:21",
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "21"
+    }
+  },
+  "postCreateCommand": "javac -d out -encoding UTF-8 -sourcepath src src/kioskLv6/KioskLv6.java && java -cp out kioskLv6.KioskLv6"
+}
