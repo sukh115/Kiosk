@@ -35,7 +35,7 @@ public class Cart {
             return;
         }
 
-        System.out.println("=== 장바구니 목록 ===");
+        System.out.println("\n=== 장바구니 목록 ===");
 
         // 중복된 메뉴 개수를 계산하고 정렬하여 출력
         cartItems.forEach((item, count) -> { // 최종 출력
