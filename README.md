@@ -1,5 +1,16 @@
 # 키오스크 과제
 
+## GitHub Codespaces에서 바로 실행하기
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/sukh115/Kiosk?quickstart=1)
+
+## 실행 방법
+1. **위 버튼을 클릭하여 GitHub Codespaces 실행**
+2. 터미널에서 아래 명령어 입력:
+   ```sh
+   javac -d out -encoding UTF-8 -sourcepath src src/kioskLv6/KioskLv6.java
+   java -cp out kioskLv6.KioskLv6
+
+
 ## 목적
 - 객체지향 개념을 이해하고 프로그램의 흐름을 파악하는 것이 목표입니다.
 - 클린 코드 원칙을 적용하고, 추상화 수준을 균일하게 유지합니다.
