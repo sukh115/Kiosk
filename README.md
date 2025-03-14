@@ -1,12 +1,12 @@
 # 키오스크 과제
 
-## 🚀 GitHub Codespaces에서 바로 실행하기
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/sukh115/Kiosk?quickstart=1)
+## 🚀 Hugging Face에서 바로 실행하기
+[![Run on Hugging Face Spaces](https://huggingface.co/spaces/YourUsername/Kiosk-Lv6/badge.svg)](https://huggingface.co/spaces/YourUsername/Kiosk-Lv6)
 
-## 📌 실행 방법 (자동 실행됨)
-1. 위 버튼을 클릭하면 **GitHub Codespaces가 자동으로 실행됨**
-2. Java 21이 자동으로 설치되고, Kiosk 프로그램이 실행됨
-3. 콘솔에서 Kiosk 시스템을 사용할 수 있음 🎉
+## 📌 실행 방법
+1. 위 버튼을 클릭하면 Hugging Face Spaces에서 실행됨
+2. 웹 UI에서 "Run" 버튼 클릭하면 `kiosk.exe` 실행됨
+3. 결과가 웹 브라우저에 표시됨 🎉
 
 ## 목적
 - 객체지향 개념을 이해하고 프로그램의 흐름을 파악하는 것이 목표입니다.
